@@ -28,21 +28,21 @@ We focus on three main areas of research: **Manipulators**, **Software**, and **
 ### Developer Tools & Infrastructure
 - Creating tutorials for how to integrate a new robot or use the repository  
 - Re-designing the **LeRobot interface**  
-  - Maintain a wrapper that allows using the LeRobot repo without forking  
-  - e.g., create a LeRobot API or use LeRobot as a submodule  
-- Creating a comprehensive testing suite  
-- Containerizing the application  
-- Supporting and improving simulation environments  
+  - Maintain a wrapper that allows using the [LeRobot](https://github.com/huggingface/lerobot) repo without forking  
+  - e.g., create a [LeRobot](https://github.com/huggingface/lerobot) API or use LeRobot as a submodule  
+- Creating a comprehensive testing suite
+- Containerizing the application using docker
+- Supporting and improving simulation environments
 
 ### Applications
-- Improving the VR app  
+- Improving the [VR app](https://github.com/ARCLab-MIT/BeaVR-app/tree/6aef2fbf7e1532d0715fb41ef5e0bd2e13194acf)
 - Supporting and demonstrating new control inputs (e.g., remote control)  
-- Contributing to **physical AI research**  
+- Contributing to **physical AI research**
 
 ### AI & Learning
-- Designing new models for imitation learning (IL), reinforcement learning (RL), and generalist policies (e.g., SmolVLA, pi0)  
+- Designing and researching new models for imitation learning (IL), reinforcement learning (RL), and generalist policies (e.g., SmolVLA, pi0)  
 - Exploring multi-modal fusion (e.g., LiDAR, touch, etc.)  
-- Investigating reasoning models such as **GR00T**  
+- Investigating reasoning models such as **GR00T**
 
 ---
 
