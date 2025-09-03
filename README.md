@@ -22,7 +22,7 @@ We focus on three main areas of research: **Manipulators**, **Software**, and **
 ### Robotics & Systems
 - Scripting controllers for robots  
   - Writing functions that move motors or read from motors  
-- Contributing, documenting, and maintaining the **BEAVR** codebase  
+- Contributing, documenting, and maintaining the [**BEAVR**](https://github.com/ARCLab-MIT/beavr-bot) codebase  
 - Researching and improving our network design  
 
 ### Developer Tools & Infrastructure
