@@ -321,14 +321,13 @@
                 <div class="demo-content">
                     <h3 class="demo-title">Pick and Place</h3>
                     <p class="demo-description">
-                        Robotic manipulation task demonstrating object grasping and precise placement. 
-                        The system learns to pick up objects from various positions and place them at target locations, 
-                        showcasing the effectiveness of our parallel training approach.
+                        Simple manipulation task demonstrating object grasping and placement. 
+                        The system learns to pick up objects from randomized positions and place them at a target location,
                     </p>
                     <div class="demo-tags">
                         <span class="tag">Manipulation</span>
                         <span class="tag">Grasping</span>
-                        <span class="tag">RL</span>
+                        <span class="tag">IL</span>
                     </div>
                 </div>
             </div>
@@ -339,13 +338,13 @@
                 <div class="demo-content">
                     <h3 class="demo-title">Shell Game</h3>
                     <p class="demo-description">
-                        Advanced tracking and manipulation task where the robot must follow and interact with moving objects. 
-                        This demonstrates the system's ability to handle dynamic environments and complex decision-making 
+                        Advanced memory/tracking and manipulation task where the robot must track the cup containing a concealed object. 
+                        This scene is designed to test object permanence and memory amid occlusions
                         through imitation learning.
                     </p>
                     <div class="demo-tags">
                         <span class="tag">Tracking</span>
-                        <span class="tag">Dynamic</span>
+                        <span class="tag">Memory</span>
                         <span class="tag">IL</span>
                     </div>
                 </div>
@@ -357,14 +356,14 @@
                 <div class="demo-content">
                     <h3 class="demo-title">Server Swap - Overhead View</h3>
                     <p class="demo-description">
-                        Top-down perspective of a bimanual manipulation task simulating server module replacement. 
-                        The robot coordinates both arms to remove and insert server components, demonstrating 
-                        precise dual-arm coordination and task planning capabilities.
+                        Top-down perspective of a mobile manipulation task simulating server module replacement. 
+                        The robot coordinates its arm and mobile base to insert server components in the correct slot indicated by a transient LED (solid orange for 5s).
+                        This scene is complex, requiring manipulation, memory of the target slot, and movement across the scene.
                     </p>
                     <div class="demo-tags">
-                        <span class="tag">Bimanual</span>
-                        <span class="tag">Coordination</span>
-                        <span class="tag">Space Ops</span>
+                        <span class="tag">Egocentric</span>
+                        <span class="tag">Precision</span>
+                        <span class="tag">Assembly</span>
                     </div>
                 </div>
             </div>
@@ -376,8 +375,7 @@
                     <h3 class="demo-title">Server Swap - Egocentric View</h3>
                     <p class="demo-description">
                         First-person perspective of the server swap task, showing the detailed interaction 
-                        from the robot's viewpoint. This view highlights the precision required for 
-                        space robotics operations and maintenance tasks.
+                        from the robot's viewpoint.
                     </p>
                     <div class="demo-tags">
                         <span class="tag">Egocentric</span>
@@ -393,13 +391,12 @@
                 <div class="demo-content">
                     <h3 class="demo-title">Vanishing Blueprint</h3>
                     <p class="demo-description">
-                        Visualization of the scene configuration and task setup process. This shows how 
-                        the simulation environment is constructed from YAML configurations and MuJoCo assets, 
-                        providing insight into the flexible scene definition system.
+                        Manipulation and memory task testing the robot's ability to recall the correct order of objects for
+                        stacking. A blueprint is shown in the first 5s before vanishing, requiring the robot to remember the sequence while stacking.
                     </p>
                     <div class="demo-tags">
-                        <span class="tag">Visualization</span>
-                        <span class="tag">Scene Setup</span>
+                        <span class="tag">Stacking</span>
+                        <span class="tag">Memory</span>
                         <span class="tag">Configuration</span>
                     </div>
                 </div>
