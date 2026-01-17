@@ -6,14 +6,14 @@
     <title>BEAVR Sim - GPU-Accelerated RL & Imitation Learning</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #60a5fa;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --border-color: #334155;
+            --primary-color: #4f6f52;      /* olive green */
+            --secondary-color: #3b4c2a;   /* deep olive */
+            --accent-color: #6b4226;      /* chocolate brown */
+            --dark-bg: #6b4226;           /* chocolate brown background */
+            --card-bg: #f8f1e5;           /* lighter cream */
+            --text-primary: #2f271f;      /* dark brown text */
+            --text-secondary: #5c4a3d;    /* medium brown text */
+            --border-color: #d5c8b6;      /* soft tan */
         }
 
         * {
@@ -24,7 +24,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f35 100%);
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #3b2c1f 100%);
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
@@ -46,16 +46,13 @@
         h1 {
             font-size: 3rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #fae6de;
             margin-bottom: 1rem;
         }
 
         .subtitle {
             font-size: 1.25rem;
-            color: var(--text-secondary);
+            color: #fae6de;
             margin-bottom: 2rem;
         }
 
@@ -93,14 +90,14 @@
 
         .demo-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 20px 40px rgba(75, 93, 59, 0.25);
         }
 
         .demo-media {
             width: 100%;
             height: auto;
             display: block;
-            background: #000;
+            background: #e4d9c8;
         }
 
         .demo-content {
@@ -128,7 +125,7 @@
 
         .tag {
             padding: 0.25rem 0.75rem;
-            background: rgba(37, 99, 235, 0.2);
+            background: rgba(79, 111, 82, 0.15);
             border: 1px solid var(--primary-color);
             border-radius: 12px;
             font-size: 0.75rem;
@@ -158,16 +155,93 @@
 
         .features li {
             padding: 0.75rem;
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(79, 111, 82, 0.12);
             border-left: 3px solid var(--primary-color);
             padding-left: 1rem;
         }
 
-        .features li::before {
-            content: "✓ ";
+        .datasets-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .datasets-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
             color: var(--accent-color);
-            font-weight: bold;
-            margin-right: 0.5rem;
+        }
+
+        .datasets-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .datasets-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: #f8f1e5;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .datasets-link:hover {
+            background: var(--secondary-color);
+        }
+
+        .citations {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+
+        .citations h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .citation-item {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(79, 111, 82, 0.08);
+            border-radius: 8px;
+        }
+
+        .citation-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .citation-item pre {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+        }
+
+        .citation-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .citation-item a:hover {
+            color: var(--secondary-color);
         }
 
         footer {
@@ -183,7 +257,7 @@
             margin-top: 1rem;
             padding: 0.75rem 1.5rem;
             background: var(--primary-color);
-            color: white;
+            color: #f8f1e5;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
@@ -215,26 +289,30 @@
             <h1>BEAVR Sim</h1>
             <p class="subtitle">GPU-Accelerated RL & Imitation Learning for Robotic Manipulation</p>
             <div class="badges">
-                <span class="badge">🚀 MuJoCo + Isaac Lab</span>
-                <span class="badge">⚡ GPU Acceleration</span>
-                <span class="badge">🤖 Parallel Environments</span>
-                <span class="badge">🎯 Task-Based Learning</span>
+                <span class="badge">MuJoCo + MuJoCo Menagerie + Isaac Lab</span>
+                <span class="badge">LeRobot Compatible</span>
+                <span class="badge">GPU Acceleration</span>
+                <span class="badge">Parallel Environments</span>
+                <span class="badge">Task-Based Learning</span>
             </div>
         </header>
 
         <div class="features">
             <h2>Key Features</h2>
             <ul>
-                <li>Thousands of parallel environments on a single GPU</li>
-                <li>Unified API for observations and actions</li>
-                <li>YAML-based robot configurations</li>
-                <li>Flexible task and scene definitions</li>
-                <li>Support for RL and Imitation Learning</li>
+                <li>Capable of running parallel environments on a single GPU</li>
+                <li>Unified API for observations and actions via LeRobot</li>
+                <li>YAML-based robot configurations, which allow easy use of the entire MuJoCo Menagerie library</li>
+                <li>Flexible task and scene definitions allowing scene building (as seen below)</li>
+                <li>Support for RL and Imitation Learning on any LeRobot-compatible environment</li>
+                <li>4 pre-built scenes with 100 human demonstrations each collected via teleoperation using <a href="https://arclab-mit.github.io/beavr-landing/" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">BEAVR-teleop</a></li>
                 <li>Integration with Isaac Lab APIs</li>
+                <li>Fully compatible with LeRobot APIs for training and evaluation</li>
             </ul>
         </div>
 
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-color);">Demonstrations</h2>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #fae6de;">Demonstrations</h2>
+        <p style="text-align: left; color: #fae6de; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8;">Below are clips from datasets we collected with the <a href="https://arclab-mit.github.io/beavr-landing/" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">BEAVR-teleop</a> system in MuJoCo simulation designed to test algorithmic physical intelligence. These tasks vary in difficulty in their demand of memory and dexterity.</p>
 
         <div class="demo-grid">
             <!-- Pick and Place Task -->
@@ -325,6 +403,56 @@
                         <span class="tag">Configuration</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="datasets-section">
+            <h2>Datasets on HuggingFace</h2>
+            <p>Access our pre-collected demonstration datasets for imitation learning research</p>
+            <a href="https://huggingface.co/collections/arclabmit/beavr-sim" class="datasets-link">View Datasets on HuggingFace 🤗</a>
+        </div>
+
+        <div class="citations">
+            <h3>Citations</h3>
+            
+            <div class="citation-item">
+                <h4>BEAVR-teleop</h4>
+                <pre>@misc{posadasnava2025beavr,
+  title         = {BEAVR: Bimanual, multi-Embodiment, Accessible, Virtual Reality Teleoperation System for Robots},
+  author        = {Alejandro Posadas-Nava and Alejandro Carrasco and Richard Linares},
+  year          = {2025},
+  eprint        = {2508.09606},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  note          = {Accepted for presentation at ICCR 2025, Kyoto},
+  url           = {https://arxiv.org/abs/2508.09606}
+}</pre>
+                <a href="https://github.com/ARCLab-MIT/beavr-bot" target="_blank">https://github.com/ARCLab-MIT/beavr-bot</a>
+            </div>
+
+            <div class="citation-item">
+                <h4>LeRobot</h4>
+                <pre>@misc{cadene2024lerobot,
+  author = {Cadene, Remi and Alibert, Simon and Soare, Alexander and Gallouedec, Quentin and Zouitine, Adil and Palma, Steven and Kooijmans, Pepijn and Aractingi, Michel and Shukor, Mustafa and Aubakirova, Dana and Russi, Martino and Capuano, Francesco and Pascal, Caroline and Choghari, Jade and Moss, Jess and Wolf, Thomas},
+  title = {LeRobot: State-of-the-art Machine Learning for Real-World Robotics in Pytorch},
+  howpublished = "\url{https://github.com/huggingface/lerobot}",
+  year = {2024}
+}</pre>
+                <a href="https://github.com/huggingface/lerobot" target="_blank">https://github.com/huggingface/lerobot</a>
+            </div>
+
+            <div class="citation-item">
+                <h4>MJLab</h4>
+                <pre>@software{Zakka_mjlab_Isaac_Lab_2025,
+  author = {Zakka, Kevin and Yi, Brent and Liao, Qiayuan and Le Lay, Louis},
+  license = {Apache-2.0},
+  month = dec,
+  title = {{mjlab: Isaac Lab API, powered by MuJoCo-Warp, for RL and robotics research.}},
+  url = {https://github.com/mujocolab/mjlab},
+  version = {1.0.0},
+  year = {2025}
+}</pre>
+                <a href="https://github.com/mujocolab/mjlab" target="_blank">https://github.com/mujocolab/mjlab</a>
             </div>
         </div>
 
