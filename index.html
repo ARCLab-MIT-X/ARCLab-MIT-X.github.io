@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEAVR Sim - GPU-Accelerated RL & Imitation Learning</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #60a5fa;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f35 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--accent-color);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .demo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .demo-media {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+
+        .demo-content {
+            padding: 1.5rem;
+        }
+
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .demo-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .demo-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid var(--primary-color);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+
+        .features {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .features li {
+            padding: 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BEAVR Sim</h1>
+            <p class="subtitle">GPU-Accelerated RL & Imitation Learning for Robotic Manipulation</p>
+            <div class="badges">
+                <span class="badge">🚀 MuJoCo + Isaac Lab</span>
+                <span class="badge">⚡ GPU Acceleration</span>
+                <span class="badge">🤖 Parallel Environments</span>
+                <span class="badge">🎯 Task-Based Learning</span>
+            </div>
+        </header>
+
+        <div class="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Thousands of parallel environments on a single GPU</li>
+                <li>Unified API for observations and actions</li>
+                <li>YAML-based robot configurations</li>
+                <li>Flexible task and scene definitions</li>
+                <li>Support for RL and Imitation Learning</li>
+                <li>Integration with Isaac Lab APIs</li>
+            </ul>
+        </div>
+
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-color);">Demonstrations</h2>
+
+        <div class="demo-grid">
+            <!-- Pick and Place Task -->
+            <div class="demo-card">
+                <img src="videos/pickplace.gif" alt="Pick and Place Task" class="demo-media">
+                <div class="demo-content">
+                    <h3 class="demo-title">Pick and Place</h3>
+                    <p class="demo-description">
+                        Robotic manipulation task demonstrating object grasping and precise placement. 
+                        The system learns to pick up objects from various positions and place them at target locations, 
+                        showcasing the effectiveness of our parallel training approach.
+                    </p>
+                    <div class="demo-tags">
+                        <span class="tag">Manipulation</span>
+                        <span class="tag">Grasping</span>
+                        <span class="tag">RL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shell Game -->
+            <div class="demo-card">
+                <img src="videos/shellgame.gif" alt="Shell Game Task" class="demo-media">
+                <div class="demo-content">
+                    <h3 class="demo-title">Shell Game</h3>
+                    <p class="demo-description">
+                        Advanced tracking and manipulation task where the robot must follow and interact with moving objects. 
+                        This demonstrates the system's ability to handle dynamic environments and complex decision-making 
+                        through imitation learning.
+                    </p>
+                    <div class="demo-tags">
+                        <span class="tag">Tracking</span>
+                        <span class="tag">Dynamic</span>
+                        <span class="tag">IL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Server Swap - Overhead View -->
+            <div class="demo-card">
+                <img src="videos/serverswap_overhead.gif" alt="Server Swap Overhead" class="demo-media">
+                <div class="demo-content">
+                    <h3 class="demo-title">Server Swap - Overhead View</h3>
+                    <p class="demo-description">
+                        Top-down perspective of a bimanual manipulation task simulating server module replacement. 
+                        The robot coordinates both arms to remove and insert server components, demonstrating 
+                        precise dual-arm coordination and task planning capabilities.
+                    </p>
+                    <div class="demo-tags">
+                        <span class="tag">Bimanual</span>
+                        <span class="tag">Coordination</span>
+                        <span class="tag">Space Ops</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Server Swap - Ego View -->
+            <div class="demo-card">
+                <img src="videos/serverswap_ego.gif" alt="Server Swap Ego View" class="demo-media">
+                <div class="demo-content">
+                    <h3 class="demo-title">Server Swap - Egocentric View</h3>
+                    <p class="demo-description">
+                        First-person perspective of the server swap task, showing the detailed interaction 
+                        from the robot's viewpoint. This view highlights the precision required for 
+                        space robotics operations and maintenance tasks.
+                    </p>
+                    <div class="demo-tags">
+                        <span class="tag">Egocentric</span>
+                        <span class="tag">Precision</span>
+                        <span class="tag">Assembly</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vanishing Blueprint -->
+            <div class="demo-card">
+                <img src="videos/vanishing_blueprint.gif" alt="Vanishing Blueprint" class="demo-media">
+                <div class="demo-content">
+                    <h3 class="demo-title">Vanishing Blueprint</h3>
+                    <p class="demo-description">
+                        Visualization of the scene configuration and task setup process. This shows how 
+                        the simulation environment is constructed from YAML configurations and MuJoCo assets, 
+                        providing insight into the flexible scene definition system.
+                    </p>
+                    <div class="demo-tags">
+                        <span class="tag">Visualization</span>
+                        <span class="tag">Scene Setup</span>
+                        <span class="tag">Configuration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built at MIT's ARCLab for Space Robotics Research</p>
+            <a href="https://github.com/ARCLab-MIT" class="github-link">View on GitHub</a>
+        </footer>
+    </div>
+</body>
+</html>
